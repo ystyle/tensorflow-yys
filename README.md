@@ -1,3 +1,27 @@
+### 训练数据
+- [百度云下载](http://pan.baidu.com/s/1pLkC4PH) 密码：`k3vx` 目前只有百鬼各个界面的图片, 下载图片后要转换为jpg格式
+- 训练, 进入`image_retraining` 执行
+    ```shell
+    python retrain.py \
+    --bottleneck_dir=bottlenecks \
+    --how_many_training_steps 500 \
+    --mode_dir=inception
+    --output_graph=retrained_graph.pd \
+    --output_labels=retrained_labels.txt \
+    --image_dir ../train_jpg
+    ```
+- 判断图片所属界面, 执行
+    ```shell
+    python testtrain.py
+    # 或者
+    cd image_retraining
+    python label_image.py \
+    --image ..\test\ChooseKingofGhosts\201704291810.png \
+    --num_top_predictions 3 \
+    --graph retrained_graph.pd \
+    --labels retrained_labels.txt
+    ```
+
 ### python中执行shell命令
 1.
 ```python
