@@ -1,0 +1,13 @@
+*.pyc
+*.npy
+*.h5
+*.hdf5
+*.sgf
+*.pkl
+/.idea
+*.pd
+*.tfrecords
+bottlenecks
+*.7z
+*.cfg
+images
