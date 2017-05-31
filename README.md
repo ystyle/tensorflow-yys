@@ -1,7 +1,7 @@
 ### 环境准备
 - tenforflow
 - python3.5.x
->tensorflow环境搭建查看[官方文档](https://www.tensorflow.org/install/)
+>tensorflow环境搭建查看[官方文档](https://www.tensorflow.org/install/)， 建议使用gpu版本， 以下所有脚本都以项目根目录为相对目录编写
 
 ### 训练数据
 - [百度云下载](http://pan.baidu.com/s/1pLkC4PH) 密码：`k3vx` 包含[百鬼夜行, 结界突破]两个副本的界面分类图片
@@ -12,7 +12,7 @@
 - 下载Mumu模拟器[用默认的1280*720的分辨率]
 - 安装阴阳师
 - 在`config.py`配置ADB的位置
-- 在`config.py`配置Mumu模拟器共享文件夹的位置， 在般在`EmulatorShell`下的`products`文件夹下创建一个`yys`的目录
+- 在`config.py`配置Mumu模拟器共享文件夹的位置， 在般在`EmulatorShell`下的`products`文件夹下创建一个`yys`的目录，这么做的目的是减少文件在传输上的时间(使用`adb pull file`会有一秒左右的传输时间)， 加快对界面预测效率。
 
 ### 测试训练的效果
 - 进入阴阳师， 点开`町中` 或 进入探索里边的 `结界突破-阴阳寮`
