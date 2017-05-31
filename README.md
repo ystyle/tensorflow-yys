@@ -1,49 +1,20 @@
+### 环境准备
+- tenforflow
+- python3.5.x
+>tensorflow环境搭建查看[官方文档](https://www.tensorflow.org/install/)
+
 ### 训练数据
-- [百度云下载](http://pan.baidu.com/s/1pLkC4PH) 密码：`k3vx` 目前只有百鬼各个界面的图片, 下载图片后要转换为jpg格式
-- 训练, 进入`image_retraining` 执行
-    ```shell
-    python retrain.py \
-    --bottleneck_dir=bottlenecks \
-    --how_many_training_steps 500 \
-    --mode_dir=inception
-    --output_graph=retrained_graph.pd \
-    --output_labels=retrained_labels.txt \
-    --image_dir ../train_jpg
-    ```
-- 判断图片所属界面, 执行
-    ```shell
-    python testtrain.py
-    # 或者
-    cd image_retraining
-    python label_image.py \
-    --image ..\test\ChooseKingofGhosts\201704291810.png \
-    --num_top_predictions 3 \
-    --graph retrained_graph.pd \
-    --labels retrained_labels.txt
-    ```
+- [百度云下载](http://pan.baidu.com/s/1pLkC4PH) 密码：`k3vx` 包含[百鬼夜行, 结界突破]两个副本的界面分类图片
+- 下载后放到项目根目录的`images`目录下(压缩文件应该自带了images文件夹了)。
+- 双击`train.bat` 训练(其实系统的可里直接执行里边的命令)
 
-### python中执行shell命令
-1.
-```python
-# 打印的命令执行结果 0或者1
-os.system('cat /proc/cpuinfo')
+### 阴阳师测试环境搭建
+- 下载Mumu模拟器[用默认的1280*720的分辨率]
+- 安装阴阳师
+- 在`config.py`配置ADB的位置
+- 在`config.py`配置Mumu模拟器共享文件夹的位置， 在般在`EmulatorShell`下的`products`文件夹下创建一个`yys`的目录
 
-# 通过 os.popen() 返回的是 file read 的对象，对其进行读取 read() 的操作可以看到执行的输出。但是无法读取程序执行的返回值
-output = os.popen('cat /proc/cpuinfo')
-print output.read()
-
-# 可以获得到返回值和输出
-(status, output) = commands.getstatusoutput('cat /proc/cpuinfo')
-print status, output
-
-# 使用val接收返回值 , 此为调用外部程序
-val = os.system("ls -al | grep \"log\" ")
-
-```
-
-### 读取注册表
-```python
-import _winreg  
-key = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER,r"Software\Microsoft\Windows\CurrentVersion\Explorer")  
-value, type = _winreg.QueryValueEx(key, "EnableAutoTray")  
-```
+### 测试训练的效果
+- 进入阴阳师， 点开`町中` 或 进入探索里边的 `结界突破-阴阳寮`
+- 在终端执行`python yys_start.py`(确保python使用的是3.5.x， 与2.7共存时运行`python3 yys_start.py`)
+- 观察终端里界面预测的情况， 界面会自动执行一些操作。
