@@ -1,22 +1,18 @@
 import os
 import tensorflow as tf
 from PIL import Image  # 注意Image,后面会用到, pillow
-# import matplotlib.pyplot as plt
-# import numpy as np
-file = 'train'
 
-cwd = 'D:\\Code\\Python\\yys\\' + file+"\\"
+cwd = 'images/train_jpg/'
 classes = {'ChooseKingofGhosts', 'Enterthenightofghosts', 'exorcism', 'patio', 'Victories'}  # 人为设定5类
-writer = tf.python_io.TFRecordWriter("yys_" + file + ".tfrecords")  # 要生成的文件
+writer = tf.python_io.TFRecordWriter("yys_train.tfrecords")  # 要生成的文件
 
 for index, name in enumerate(classes):
     print(os.environ)
     class_path = cwd + name + '\\'
     for img_name in os.listdir(class_path):
         img_path = class_path + img_name  # 每一个图片的地址
-
         img = Image.open(img_path)
-        img = img.resize((128, 72))
+        img = img.resize((512, 144))
         img_raw = img.tobytes()  # 将图片转化为二进制格式
         example = tf.train.Example(features=tf.train.Features(feature={
             "label": tf.train.Feature(int64_list=tf.train.Int64List(value=[index])),
