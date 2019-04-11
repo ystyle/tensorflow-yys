@@ -4,7 +4,7 @@
 >tensorflow环境搭建查看[官方文档](https://www.tensorflow.org/install/)， 建议使用gpu版本， 以下所有脚本都以项目根目录为相对目录编写
 
 ### 训练数据
-- [百度云下载](http://pan.baidu.com/s/1i5kjnnR) 密码：`29ij` 包含[百鬼夜行, 结界突破]两个副本的界面分类图片
+- [百度云下载](https://pan.baidu.com/s/17D59O0JGMfWnligBGCHSaA) 密码：`ugh5` 包含[百鬼夜行, 结界突破]两个副本的界面分类图片
 - 下载后放到项目根目录的`images`目录下(压缩文件应该自带了images文件夹了)。
 - 双击`train.bat` 训练(其实系统的可里直接执行里边的命令)
 
